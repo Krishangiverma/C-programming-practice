@@ -1,63 +1,36 @@
-// make a calculator
-#include <stdio.h>
+//calculator
+#include<stdio.h>
+int main(){
+   float num1,num2,result;
+   char operator;
+   printf("enter first number: ");
+   scanf("%f",&num1);
 
-int add(int a, int b);
-int sub(int a, int b);
-int mul(int a, int b);
-float divide(int a, int b);
+   printf("enter an operator(+,-,*,/): \n");
+   scanf(" %c",&operator);//space before %c is important coz if u write without
+   //spaces it catches the newline instead of waiting for your operator
 
-int main()
-{
-    int a, b, choice;
+   printf("enter second number: ");
+   scanf("%f",&num2);
 
-    printf("enter two numbers: ");
-    scanf("%d %d", &a, &b);
-
-    printf("\n1.addition");
-    printf("\n2.subtraction");
-    printf("\n3.multiplication");
-    printf("\n4.division");
-
-    printf("\nenter your choice: ");
-    scanf("%d", &choice);
-
-    switch (choice)
-    {
-    case 1:
-        printf("result=%d", add(a, b));
-        break;
-
-    case 2:
-        printf("result=%d", sub(a, b));
-        break;
-
-    case 3:
-        printf("result=%d", mul(a, b));
-        break;
-
-    case 4:
-        printf("result= %.2f", divide(a, b));
-        break;
-
-    default:
-        printf("invalid choice");
+   if(operator=='+'){
+    result=num1+num2;
+    printf("result:  %.2f\n",result);
+   } else if(operator=='-'){
+    result=num1-num2;
+    printf("result:  %.2f\n",result);
+   }else if(operator=='*'){
+    result=num1*num2;
+    printf("result:  %.2f\n",result);
+}else if(operator=='/'){
+    if(num2!=0){
+ result=num1/num2;
+    printf("result:  %.2f\n",result);
+    }else{
+        printf("error: division by zero!\n");
+    }
+} else{
+        printf("invalid operator!\n");
     }
     return 0;
-}
-
-int add(int a, int b)
-{
-    return a + b;
-}
-int sub(int a, int b)
-{
-    return a - b;
-}
-int mul(int a, int b)
-{
-    return a * b;
-}
-float divide(int a, int b)
-{
-    return (float)a / b;
 }
